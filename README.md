@@ -1,14 +1,31 @@
-[![Build Status](https://travis-ci.org/crossoverJie/SSM.svg?branch=master)](https://travis-ci.org/crossoverJie/SSM)
-[![](https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square)](https://juejin.im/post/585677f561ff4b00685aff42)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)
 
+<p align="center">
+                                                                                                                    
+ <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fluug8kpmnj30gl07hweq.jpg" >
+ <br/>
+ <br/>
+ <a href="https://travis-ci.org/crossoverJie/SSM">
+    <img src="https://travis-ci.org/crossoverJie/SSM.svg?branch=master" >
+ </a>
+ 
+ <a href="https://jq.qq.com/?_wv=1027&k=5HPYvQk">
+    <img src="https://img.shields.io/badge/QQ%E7%BE%A4-787381170-yellowgreen.svg" >
+ </a>
+ <a href="https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square">
+    <img src="https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square" >
+ </a>
+ 
+ 
+ <a href="https://github.com/ellerbrock/open-source-badge/">
+    <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
+ </a>
+ 
+<p>
 
-
-# SSM
 
 [中文简介](https://github.com/crossoverJie/SSM/blob/master/README-ZH.md)
  
-I'll update some skills in actual development aperiodically.There are no complicated operation flows or xxx system,just some practical shares about skills.
+I'll update some skills in actual development aperiodically.There are no complicated operation flows or **xxx system**,just some practical shares about skills.
 
 ## Directory Structure
 
@@ -19,6 +36,11 @@ I'll update some skills in actual development aperiodically.There are no complic
 │   ├── ├──resources
 ├── SSM-BOOT                                   // Available for internal use of dubbo dependencies 
 │   ├── ├──resources/spring                    // dubbo consumer configuration
+├── SSM-SECONDS-KILL                           // seckill module
+│   ├── ├──SSM-SECONDS-KILL-API                // seckill open api
+│   ├── ├──SSM-SECONDS-KILL-ORDER-CONSUMER     // Kafka consumer module
+│   ├── ├──SSM-SECONDS-KILL-SERVICE            // service module
+│   ├── ├──SSM-SECONDS-KILL-WEB                // web module
 ├── SSM-SERVICE                                // The service implementation of the dubbo application 
 │   ├── src/main
 │   ├── ├──java/com/crossoverJie/api           // specific code
@@ -40,6 +62,9 @@ I'll update some skills in actual development aperiodically.There are no complic
 │   ├── ├──├──dao                              // dao package
 │   ├── ├──├──enums                            // enum package
 │   ├── ├──├──intercept                        // Interceptor
+│   ├── ├──├──kafka                            // Kafka
+│   ├── ├──├──├──official                      // Official consumption
+│   ├── ├──├──├──optimization                  // Multi-threaded consumption
 │   ├── ├──├──lucene                           // Lucene related code
 │   ├── ├──├──pojo                             // pojo package
 │   ├── ├──├──req                              // request package
@@ -79,12 +104,11 @@ I'll update some skills in actual development aperiodically.There are no complic
 * [x] [SSM(十四) 基于annotation的http防重插件](https://crossoverjie.top/2017/05/24/SSM14/)
 * [x] [SSM(十五)乐观锁与悲观锁的实际应用](https://crossoverjie.top/2017/07/09/SSM15/)
 * [x] [SSM(十六)曲线救国-`Kafka consumer`消费异常处理](https://crossoverjie.top/2017/09/05/SSM16/)
+* [x] [SSM(十七) MQ应用](https://crossoverjie.top/2017/10/20/SSM17/)
+* [x] [SSM(十八) 秒杀架构实践](https://crossoverjie.top/2018/05/07/ssm/SSM18-seconds-kill/)
 
 --- 
 
-# Special Note 
-
-On the project,`SSM-SERVICE` `SSM-WEB` module is only used to demonstrate the use of normal circumstances will only appear a service or web module.
 
 
 # Quick Start
@@ -96,7 +120,10 @@ On the project,`SSM-SERVICE` `SSM-WEB` module is only used to demonstrate the us
 
 # Q&A
 
-#### ClassNotFoundException: *CheckReqNo*
+#### Does the reliance or code that begins with `crossoverJie` do not exist?
+
+
+This is because I have a dependency on my jar package in the project, which is not published to the maven central factory library.
 
 Because there is dependence: 
 
@@ -104,7 +131,9 @@ https://github.com/crossoverJie/SSM-REQUEST-CHECK
 
 https://github.com/crossoverJie/SSM-DUBBO-HTTP 
 
-jar。
+https://github.com/crossoverJie/SSM-DUBBO-FILTER
+
+jar.
 
 *solution:*
 
@@ -121,7 +150,7 @@ and Installed locally。
 
 # Partial Screenshots
 
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fj8jl8t42oj30bo072q3g.jpg)
+![](https://i.imgur.com/6of3Z5K.gif)
 
 ![封面.jpg](https://ooo.0o0.ooo/2017/05/24/59253bc0291c1.jpg)
 
@@ -152,10 +181,11 @@ and Installed locally。
 
 # More Information
 
-[使用`springBoot+SpringCloud`构建微服务项目](https://github.com/crossoverJie/springboot-cloud)
+- [使用 `springBoot+SpringCloud`构建微服务项目](https://github.com/crossoverJie/springboot-cloud)
+- [Java 知识点](https://github.com/crossoverJie/Java-Interview)
 
 # Contact Author
 - [crossoverJie@gmail.com](mailto:crossoverJie@gmail.com)
 
-![weixinchat.jpg](https://ooo.0o0.ooo/2017/07/05/595c77b2a080d.jpg)
+![](https://ws2.sinaimg.cn/large/006tKfTcly1fsa01u7ro1j30gs0howfq.jpg)
 

@@ -1,12 +1,24 @@
 
-[![Build Status](https://travis-ci.org/crossoverJie/SSM.svg?branch=master)](https://travis-ci.org/crossoverJie/SSM)
-[![](https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square)](https://juejin.im/post/585677f561ff4b00685aff42)
-[![Open Source Love](https://badges.frapsoft.com/os/v1/open-source.svg?v=103)](https://github.com/ellerbrock/open-source-badge/)
+<p align="center">
+                                                                                                                    
+ <img src="https://ws4.sinaimg.cn/large/006tNc79ly1fluug8kpmnj30gl07hweq.jpg" >
+ <br/>
+ <br/>
+ <a href="https://travis-ci.org/crossoverJie/SSM">
+    <img src="https://travis-ci.org/crossoverJie/SSM.svg?branch=master" >
+ </a>
+ <a href="https://jq.qq.com/?_wv=1027&k=5HPYvQk">
+    <img src="https://img.shields.io/badge/QQ%E7%BE%A4-787381170-yellowgreen.svg" >
+ </a>
+ <a href="https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square">
+    <img src="https://badge.juejin.im/entry/5856c00061ff4b0063be6be0/likes.svg?style=flat-square" >
+ </a>
+ <a href="https://github.com/ellerbrock/open-source-badge/">
+    <img src="https://badges.frapsoft.com/os/v1/open-source.svg?v=103" >
+ </a>
+<p>
 
-
-# SSM
-
-使用Idea搭建的Maven项目，会不定期更新一些在实际开发中使用的技巧)。没有复杂的业务流程，更不是XXXX系统，只有一些技术的分享
+使用Idea搭建的Maven项目，会不定期更新一些在实际开发中使用的技巧,没有复杂的业务流程，更不是**XXXX系统**，只有一些技术的分享
 
 ## 目录结构
 
@@ -17,6 +29,11 @@
 │   ├── ├──resources
 ├── SSM-BOOT                                   // 提供给内部使用的dubbo依赖
 │   ├── ├──resources/spring                    // dubbo consumer相关配置
+├── SSM-SECONDS-KILL                           // 秒杀模块
+│   ├── ├──SSM-SECONDS-KILL-API                // 对外 dubbo 相关的 api
+│   ├── ├──SSM-SECONDS-KILL-ORDER-CONSUMER     // 订单的 kafka 消费
+│   ├── ├──SSM-SECONDS-KILL-SERVICE            // dubbo 服务模块
+│   ├── ├──SSM-SECONDS-KILL-WEB                // Web 模块
 ├── SSM-SERVICE                                // dubbo应用的service实现
 │   ├── src/main
 │   ├── ├──java/com/crossoverJie/api           // 具体代码
@@ -38,7 +55,10 @@
 │   ├── ├──├──dao                              // dao层
 │   ├── ├──├──enums                            // 枚举包
 │   ├── ├──├──intercept                        // 拦截器
-│   ├── ├──├──lucene                           // Lucene 相关包
+│   ├── ├──├──kafka                            // Kafka
+│   ├── ├──├──├──official                      // 官方消费
+│   ├── ├──├──├──optimization                  // 多线程消费
+│   ├── ├──├──lucene                           // Lucene 相关包
 │   ├── ├──├──pojo                             // pojo包
 │   ├── ├──├──req                              // 请求类
 │   ├── ├──├──res                              // 响应类
@@ -59,9 +79,6 @@
 
 ```
 
-## 特别说明
-
-关于项目中的`SSM-SERVICE `,`SSM-WEB`模块只是为了演示使用，正常情况只会出现一个service或者是web模块。
 
 ## TODO LIST
 
@@ -81,20 +98,16 @@
 * [x] [SSM(十四) 基于annotation的http防重插件](https://crossoverjie.top/2017/05/24/SSM14/)
 * [x] [乐观锁与悲观锁的实际应用](https://crossoverjie.top/2017/07/09/SSM15/)
 * [x] [SSM(十六)曲线救国-`Kafka consumer`消费异常处理](https://crossoverjie.top/2017/09/05/SSM16/)
+* [x] [SSM(十七) MQ应用](https://crossoverjie.top/2017/10/20/SSM17/)
+* [x] [SSM(十八) 秒杀架构实践](https://crossoverjie.top/2018/05/07/ssm/SSM18-seconds-kill/)
 
 --- 
 
 # 常见问题
 
-#### 找不到`CheckReqNo.java`类
+#### 以 `crossoverJie` 开头的依赖或代码不存在？
 
-这是由于我再项目中有依赖: 
-
-https://github.com/crossoverJie/SSM-REQUEST-CHECK 
-
-https://github.com/crossoverJie/SSM-DUBBO-HTTP 
-
-这个两个插件。
+这是由于我在项目中有依赖自己的 jar 包，并没有发布到 maven 中央厂库。
 
 *解决方案:*
 
@@ -105,15 +118,17 @@ https://github.com/crossoverJie/SSM-REQUEST-CHECK
 
 https://github.com/crossoverJie/SSM-DUBBO-HTTP 
 
+https://github.com/crossoverJie/SSM-DUBBO-FILTER
+
 `install` 到本地即可。
-- 不要clone `master`分支，使用https://github.com/crossoverJie/SSM/releases/tag/2.1.0 或之前的tag即可。
+- 不要 clone `master`分支，使用https://github.com/crossoverJie/SSM/releases/tag/2.1.0 或之前的 tag 即可。
 
 
 ---
 
 # 应用截图
 
-![](https://ws4.sinaimg.cn/large/006tNc79ly1fj8jl8t42oj30bo072q3g.jpg)
+![](https://i.imgur.com/6of3Z5K.gif)
 
 ![封面.jpg](https://ooo.0o0.ooo/2017/05/24/59253bc0291c1.jpg)
 
@@ -144,11 +159,13 @@ https://github.com/crossoverJie/SSM-DUBBO-HTTP
 
 # 更多信息
 
-[使用`springBoot+SpringCloud`构建微服务项目](https://github.com/crossoverJie/springboot-cloud)
+
+- [使用 `springBoot+SpringCloud`构建微服务项目](https://github.com/crossoverJie/springboot-cloud)
+- [Java 知识点](https://github.com/crossoverJie/Java-Interview)
 
 # 联系作者
 - [crossoverJie@gmail.com](mailto:crossoverJie@gmail.com)
 
-![weixinchat.jpg](https://ooo.0o0.ooo/2017/07/05/595c77b2a080d.jpg)
+![](https://ws2.sinaimg.cn/large/006tKfTcly1fsa01u7ro1j30gs0howfq.jpg)
 
 
